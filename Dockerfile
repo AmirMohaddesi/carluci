@@ -8,9 +8,18 @@ RUN apt update \
 #CARLSIM
 RUN git clone --recursive https://github.com/UCI-CARL/CARLsim4.git
 
+RUN mkdir $HOME/installdir
+
+RUN export CARLSIM4_INSTALL_DIR=$HOME/installdir
+
+RUN export CUDA_PATH=/usr/local/cuda
+
+RUN source $HOME/.bashrc
 
 RUN cd CARLsim4
 
-RUN export CARLSIM4_INSTALL_DIR=/CARLSIM4
+RUN make distclean
 
-RUN make -j4 
+RUN make
+
+RUN make install
