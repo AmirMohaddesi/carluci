@@ -2,7 +2,7 @@ FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu16.04
 # https://github.com/rubenrtorrado/GVGAI_GYM.git
 
 RUN apt update \
-	&& apt install git-core
+	&& apt install git-core\
 	&& apt install unzip
 
 #CARLSIM
