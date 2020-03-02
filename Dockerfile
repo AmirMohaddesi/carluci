@@ -13,4 +13,4 @@ RUN cd CARLsim4
 
 RUN export CARLSIM4_INSTALL_DIR=/CARLSIM4
 
-RUN make nocuda -j4 
+RUN make -j4 
