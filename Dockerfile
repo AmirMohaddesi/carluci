@@ -10,11 +10,9 @@ RUN git clone --recursive https://github.com/UCI-CARL/CARLsim4.git
 
 RUN mkdir $HOME/installdir
 
-RUN export CARLSIM4_INSTALL_DIR=$HOME/installdir
+ENV CARLSIM4_INSTALL_DIR=$HOME/installdir
 
-RUN export CUDA_PATH=/usr/local/cuda
-
-RUN source $HOME/.bashrc
+ENV CUDA_PATH=/usr/local/cuda
 
 RUN cd CARLsim4
 
