@@ -6,7 +6,6 @@ RUN apt update \
 	&& apt install -y unzip
 
 #CARLSIM
-RUN git clone --recursive https://github.com/UCI-CARL/CARLsim4.git
 
 RUN mkdir $HOME/installdir
 
@@ -14,10 +13,21 @@ ENV CARLSIM4_INSTALL_DIR=$HOME/installdir
 
 ENV CUDA_PATH=/usr/local/cuda
 
-RUN cd CARLsim4
+RUN cd $CUDA_PATH \
+	&& git clone https://github.com/NVIDIA/cuda-samples \ 
+	&& mkdir samples \
+	&& cd samples \
+	&& mkdir common \
+	&& cd common \
+	&& mkdir inc \
+	&& cd inc \
+	&& cp -r $CUDA_PATH/cuda-samples/Common/* . \
+	&& echo $PWD \
+	&& echo $(ls)
 
-RUN make distclean
+RUN git clone --recursive https://github.com/UCI-CARL/CARLsim4.git \
+	&& cd CARLsim4 \
+	&& make distclean \
+	&& make \
+	&& make install
 
-RUN make
-
-RUN make install
