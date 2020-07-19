@@ -25,8 +25,8 @@ RUN cd $CUDA_PATH \
 	&& echo $PWD \
 	&& echo $(ls)
 
-RUN git clone --recursive https://github.com/UCI-CARL/CARLsim4.git \
-	&& cd CARLsim4 \
+RUN git clone --recursive https://github.com/UCI-CARL/CARLsim5.git \
+	&& cd CARLsim5 \
 	&& make distclean \
 	&& make \
 	&& make install
